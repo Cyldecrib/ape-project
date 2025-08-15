@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <!-- Banana -->
+  <path d="M10,25 C10,15 20,5 35,10 C45,15 45,25 40,35 C35,45 25,45 15,35 C10,30 10,25 10,25 Z" fill="#FFEB3B" stroke="#000" stroke-width="1"/>
+  <!-- Banana details -->
+  <path d="M15,30 C20,35 25,37 35,30" stroke="#000" stroke-width="0.5" fill="none"/>
+  <path d="M17,25 C22,30 27,32 33,27" stroke="#000" stroke-width="0.5" fill="none"/>
+</svg>

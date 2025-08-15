@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$Ape Coin - Degen Mandate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero-section">
+            <div class="hero-text">
+                <h1>$Ape</h1>
+                <p class="subtitle">A Degen's Mandate</p>
+                <section class="narrative">
+                    <p>No kings. No councils. No bananas.</p>
+                    <p>We are the signal in the noise. Born from the chaos of the memecoin trenches, fueled by instant noodles and pure initiative. This isn't a project; it's a digital troop of apes who grind.</p>
+                </section>
+                <div class="cta-buttons">
+                    <a href="#" class="btn primary">CHART</a>
+                    <a href="#" class="btn secondary">TELEGRAM</a>
+                </div>
+            </div>
+            <div class="ape-visual">
+                <img src="ape.jpg" alt="A degen ape illustration">
+                <div class="scanlines"></div>
+            </div>
+        </header>
+
+        <section class="info-section">
+            <h2>// PROTOCOL SPECS</h2>
+            <dl class="spec-list">
+                <dt>Token Supply</dt>
+                <dd>1,000,000,000 $Ape</dd>
+                <dt>Taxes</dt>
+                <dd>0% Buy / 0% Sell</dd>
+                <dt>Liquidity</dt>
+                <dd>LP Tokens Burnt 🔥</dd>
+                <dt>Ownership</dt>
+                <dd>Contract Renounced</dd>
+            </dl>
+        </section>
+
+
+
+        <section class="info-section">
+            <h2>// HOW TO APE IN</h2>
+            <ol class="how-to-list">
+                <li><span>1.</span> Get a Wallet &raquo; Download <a href="https://phantom.app/" target="_blank">Phantom Wallet</a>.</li>
+                <li><span>2.</span> Get SOL &raquo; Buy SOL on an exchange like Coinbase or Binance.</li>
+                <li><span>3.</span> Go to Raydium &raquo; Connect your wallet to <a href="https://raydium.io/" target="_blank">Raydium</a>.</li>
+                <li><span>4.</span> Swap for $Ape &raquo; Paste the contract address below and swap your SOL.</li>
+            </ol>
+            <button class="btn copy-btn" id="copyButton">
+                <span id="copyText">COPY CONTRACT ADDRESS</span>
+                <span id="contractAddress" style="display:none;">YourSolanaContractAddressHere123456789</span>
+            </button>
+        </section>
+    </div>
+
+    <div class="clickbait-container">
+        <div class="ape-counter">
+            <span id="clickCount">CLICK HERE IF YOU APED</span>
+        </div>
+        <div id="apeButton" class="ape-button">
+            <img src="pressed.svg" alt="Ape" id="apeImage" class="ape-image">
+        </div>
+        <div class="banana-container" id="bananaContainer"></div>
+        <div class="ape-stats">
+            <div class="stat">
+                <span id="totalApes">0</span>
+                <span class="stat-label">TOTAL APES</span>
+            </div>
+        </div>
+    </div>
+<div id="popupOverlay" class="popup-overlay">
+        <div class="popup-box">
+            <p><strong>PRO TIP:</strong> Press <kbd>CTRL</kbd> + <kbd>A</kbd> to Ape!</p>
+            <button id="closePopupButton" class="popup-close-btn">Got it</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <object data="pressed.svg" type="image/svg+xml" style="display: none;"></object>
+</body>
+</html>
