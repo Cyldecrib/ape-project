@@ -2,6 +2,9 @@ const express = require('express');
 const { createClient } = require('@vercel/kv');
 const app = express();
 
+// ADD THIS LINE
+app.use(express.json()); // Middleware to parse JSON bodies
+
 // Create a Vercel KV client
 const kv = createClient({
   url: process.env.KV_REST_API_URL,
