@@ -1,81 +1,49 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const { createClient } = require('@vercel/kv');
 const app = express();
-const PORT = 3000;
 
-// Path to our counter file
-const countFilePath = path.join(__dirname, 'count.json');
-const initialData = { "totalApes": 0 };
+// Create a Vercel KV client
+const kv = createClient({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});
 
-// Serve the static files (HTML, CSS, JS) from the current directory
-app.use(express.static(__dirname));
+// Serve static files from the `public` directory (or root)
+// NOTE: Vercel handles this automatically, but this line is good practice.
+app.use(express.static('public'));
 
-// API Endpoint: GET the current count
-app.get('/api/count', (req, res) => {
-    fs.readFile(countFilePath, 'utf8', (err, data) => {
-        if (err) {
-            // If file doesn't exist, return initial data
-            if (err.code === 'ENOENT') {
-                return res.json(initialData);
-            }
-            console.error(err);
-            return res.status(500).json({ error: 'Could not read count file.' });
-        }
-        // **NEW:** If file is empty, return initial data
-        if (!data) {
-            return res.json(initialData);
-        }
-        res.json(JSON.parse(data));
-    });
+// API Endpoint: GET the current count from Vercel KV
+app.get('/api/count', async (req, res) => {
+  try {
+    const totalApes = await kv.get('totalApes');
+    res.json({ totalApes: totalApes || 0 });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Could not retrieve count.' });
+  }
 });
 
 // API Endpoint: POST to increment the count
-app.post('/api/increment', (req, res) => {
-    fs.readFile(countFilePath, 'utf8', (err, data) => {
-        let countData;
-        if (err || !data) {
-            // **NEW:** If file is empty or doesn't exist, start from the initial value
-            countData = initialData;
-        } else {
-            countData = JSON.parse(data);
-        }
-
-        countData.totalApes++; // Increment the count
-
-        fs.writeFile(countFilePath, JSON.stringify(countData, null, 2), (err) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ error: 'Could not save new count.' });
-            }
-            res.json(countData); // Send back the new count
-        });
-    });
+app.post('/api/increment', async (req, res) => {
+  try {
+    const newCount = await kv.incr('totalApes');
+    res.json({ totalApes: newCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Could not increment count.' });
+  }
 });
 
-// You'll also need an endpoint for the banana bonus
-app.post('/api/add-bonus', (req, res) => {
-    fs.readFile(countFilePath, 'utf8', (err, data) => {
-        let countData;
-        if (err || !data) {
-            countData = initialData;
-        } else {
-            countData = JSON.parse(data);
-        }
-
-        countData.totalApes += 5; // Add bonus points
-
-        fs.writeFile(countFilePath, JSON.stringify(countData, null, 2), (err) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ error: 'Could not save new count.' });
-            }
-            res.json(countData);
-        });
-    });
+// API Endpoint: POST for the banana bonus
+app.post('/api/add-bonus', async (req, res) => {
+  try {
+    const newCount = await kv.incrby('totalApes', 5);
+    res.json({ totalApes: newCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Could not add bonus.' });
+  }
 });
 
-
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+// Remove the app.listen part and export the app
+module.exports = app;
