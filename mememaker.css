@@ -1,0 +1,155 @@
+/* Basic styling for the meme maker page */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #FFFF00;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 0;
+}
+
+.meme-generator {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+canvas {
+    border: 3px solid #FFFF00;
+    background-color: #1a1a1a;
+    width: 500px; /* Fixed size */
+    height: 500px; /* Fixed size */
+    max-width: 100%;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.control-section {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.control-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    background: #000;
+    border: 1px solid #FFFF00;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    background-color: #FFFF00;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+footer a {
+    color: #FFFF00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Gallery Styles for Backgrounds and Characters */
+.selection-gallery {
+    display: grid;
+    /* Updated grid to use a fixed size for thumbnails */
+    grid-template-columns: repeat(auto-fill, 150px);
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center; /* Center the grid items */
+}
+
+.gallery-thumbnail {
+    /* Set a definite size for the asset cards */
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #000;
+}
+
+.gallery-thumbnail.selected {
+    border-color: #FFFF00;
+    transform: scale(1.05);
+}
+
+.gallery-thumbnail:hover {
+    border-color: #999;
+}
+
+/* Accessory Options Styles */
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.accessory-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #333;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.accessory-option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.accessory-option img.trait-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background-color: #000;
+    border-radius: 3px;
+}

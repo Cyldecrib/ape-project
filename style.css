@@ -21,9 +21,9 @@ body {
     width: 90%;
     max-width: 960px; /* Increased max-width for side-by-side layout */
     margin: 0 auto;
-   
+    
     background-color: #000000;
-   
+    
 }
 
 /* Hero Section using Flexbox for side-by-side layout */
@@ -33,7 +33,7 @@ body {
     gap: 2rem;
     padding: 3rem;
     border: 2px solid #FFFF00;
-     box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
     border-bottom: 2px solid #FFFF00; /* Replaced individual section borders with one divider */
 }
 
@@ -63,6 +63,9 @@ h1 {
 
 .cta-buttons {
     margin-top: 2rem;
+    display: flex; /* Added for better control of buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    gap: 1rem; /* Use gap for spacing */
 }
 
 .btn {
@@ -88,7 +91,7 @@ h1 {
     background-color: transparent;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
-    margin-left: 1rem;
+    /* margin-left: 1rem;  Removed in favor of gap */
 }
 
 .btn.secondary:hover {
@@ -126,7 +129,7 @@ h1 {
 }
 
 .info-section:not(:last-child) {
-     border-bottom: 1px dashed rgba(255, 255, 0, 0.5); /* Add a faint line between sections */
+    border-bottom: 1px dashed rgba(255, 255, 0, 0.5); /* Add a faint line between sections */
 }
 
 .info-section h2 {
@@ -214,13 +217,13 @@ h1 {
 }
 
 .ape-counter {
-     font-size: 2.5rem;
-     color: #FFFF00;
-     font-family: 'VT323', 'Courier New', Courier, monospace;
-     text-shadow: 0 0 10px rgba(255, 255, 0, 0.7);
-     margin-bottom: 1rem;
-     cursor: pointer;
-     transition: transform 0.3s ease;
+    font-size: 2.5rem;
+    color: #FFFF00;
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.7);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .ape-counter:hover {
@@ -252,14 +255,14 @@ h1 {
 }
 
 .banana-container {
-     position: fixed;
-     width: 100%;
-     height: 100vh;
-     top: 0;
-     left: 0;
-     pointer-events: none;
-     overflow: hidden;
-     z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
 }
 
 .banana {
@@ -343,9 +346,9 @@ h1 {
 }
 
 @keyframes fall {
-     0% { transform: translateY(-100px) rotate(0deg) scale(0.8); opacity: 0; }
-     10% { opacity: 1; }
-     100% { transform: translateY(100vh) rotate(360deg) scale(1.2); opacity: 0; }
+    0% { transform: translateY(-100px) rotate(0deg) scale(0.8); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg) scale(1.2); opacity: 0; }
 }
 
 @keyframes collect {
@@ -445,4 +448,124 @@ h1 {
     cursor: pointer;
     font-weight: bold;
     border-radius: 4px;
+}
+/* Styling for icons inside CTA buttons */
+.cta-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.cta-buttons .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Style for the X logo SVG */
+.cta-buttons .btn.primary .icon {
+    fill: #000;
+}
+
+
+/*
+==============================================
+   MOBILE RESPONSIVENESS
+==============================================
+*/
+@media (max-width: 768px) {
+
+    body {
+        font-size: 1rem; /* Adjust base font size for better readability */
+        padding: 1rem 0;
+    }
+
+    .container {
+        width: 95%; /* Use more of the screen width */
+    }
+
+    /* Stack hero section vertically */
+    .hero-section {
+        flex-direction: column;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .hero-text {
+        order: 2; /* Make text appear below the image */
+    }
+
+    .ape-visual {
+        order: 1; /* Make image appear above the text */
+        margin-bottom: 2rem;
+    }
+    
+    .ape-visual img {
+        min-width: 200px; /* Allow image to be smaller on mobile */
+    }
+
+    /* Adjust typography for smaller screens */
+    h1 {
+        font-size: 4rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .narrative p {
+        max-width: 100%; /* Allow narrative text to use full width */
+    }
+    
+    .cta-buttons {
+        justify-content: center; /* Center buttons when they wrap */
+    }
+
+    /* Adjust padding for info sections */
+    .info-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .info-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Stack protocol specs into a single column */
+    .spec-list {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .spec-list dt {
+        text-align: left; /* Align spec titles to the left */
+        grid-column: 1; /* Ensure it stays in the first column */
+    }
+    
+    .spec-list dt::after {
+        content: ""; /* Remove the colon */
+    }
+
+    .spec-list dd {
+        grid-column: 1; /* Ensure it stays in the first column */
+        margin-bottom: 0.5rem; /* Add some space below the value */
+    }
+
+    /* Adjust "How To" list padding */
+    .how-to-list li {
+        padding-left: 2.5rem;
+    }
+
+    /* Adjust clickbait section for smaller screens */
+    .clickbait-container {
+        padding: 2rem 1rem;
+    }
+
+    .ape-counter {
+        font-size: 2rem;
+    }
+    
+    .ape-image {
+        width: 250px;
+        height: 250px;
+    }
 }
