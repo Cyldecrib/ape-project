@@ -17,24 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Asset Definitions ---
     const backgrounds = [
-        { id: 'penthouse', src: './assets/traits/bg_penthouse.png', name: 'Penthouse' },
-        { id: 'mudhouse', src: './assets/traits/bg_mudhouse.png', name: 'Mudhouse' },
-        { id: 'church', src: './assets/traits/bg_mac.png', name: 'MacDonalds' },
-        { id: 'clubhouse', src: './assets/traits/bg_clubhouse.jpg', name: 'Clubhouse' },
-        { id: 'mosque', src: './assets/traits/bg_green.png', name: 'Green Candle' },
-        { id: 'battlefield', src: './assets/traits/bg_battlefield.png', name: 'Battlefield' },
+        { id: 'penthouse', src: '../assets/traits/bg_penthouse.png', name: 'Penthouse' },
+        { id: 'mudhouse', src: '../assets/traits/bg_mudhouse.png', name: 'Mudhouse' },
+        { id: 'church', src: '../assets/traits/bg_mac.png', name: 'MacDonalds' },
+        { id: 'clubhouse', src: '../assets/traits/bg_clubhouse.jpg', name: 'Clubhouse' },
+        { id: 'mosque', src: '../assets/traits/bg_green.png', name: 'Green Candle' },
+        { id: 'battlefield', src: '../assets/traits/bg_battlefield.png', name: 'Battlefield' },
     ];
 
     const characters = [
-        { id: 'ape1', src: './assets/traits/base_ape_1.png', name: 'Ape Base 1' },
-        { id: 'ape2', src: './assets/traits/base_ape_2.png', name: 'Ape Base 2' },
-        { id: 'ape3', src: './assets/traits/base_ape_3.png', name: 'Ape Base 3' },
+        { id: 'ape1', src: '../assets/traits/base_ape_1.png', name: 'Ape Base 1' },
+        { id: 'ape2', src: '../assets/traits/base_ape_2.png', name: 'Ape Base 2' },
+        { id: 'ape3', src: '../assets/traits/base_ape_3.png', name: 'Ape Base 3' },
         ];
 
     const traits = [
-        { id: 'hat', src: './assets/traits/trait_hat.png', name: 'Hat' },
-        { id: 'eyeglass', src: './assets/traits/trait_money.png', name: 'Money' },
-        { id: 'fire-eyes', src: './assets/traits/pressed.png', name: 'APE' },
+        { id: 'hat', src: '../assets/traits/trait_hat.png', name: 'Hat' },
+        { id: 'eyeglass', src: '../assets/traits/trait_money.png', name: 'Money' },
+        { id: 'fire-eyes', src: '../assets/traits/pressed.png', name: 'APE' },
     ];
 
     const imageCache = {};
